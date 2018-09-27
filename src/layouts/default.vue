@@ -5,17 +5,15 @@
     <div id="content-wrapper" class="mui--text-center">
       <nuxt class="mui-container"/>
     </div>
-    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
-import AppFooter from "@/components/Footer";
 import AppHeader from "@/components/Header";
 import NavBar from "@/components/Navbar/Navbar";
 
 export default {
-  components: { AppHeader, AppFooter, NavBar },
+  components: { AppHeader, NavBar },
   methods: {
     reloadPage() {
       window.location.reload();

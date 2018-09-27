@@ -23,17 +23,10 @@ module.exports = {
         rel: "icon",
         type: "image/x-icon",
         href: "/favicon.ico"
-      },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css?family=Roboto"
-      },
-      {
-        rel: "stylesheet",
-        href: "https://cdn.muicss.com/mui-0.9.35/css/mui.min.css"
       }
     ]
   },
+  plugins: [{ src: "~plugins/cookies.js", ssr: false }],
 
   // <script src="https://cdn.muicss.com/mui-0.9.35/js/mui.min.js"></script>
   /*
