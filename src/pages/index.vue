@@ -15,27 +15,33 @@
 </template>
 
 <script>
-import { db } from '~/plugins/firebase.js'
-import Logo from '~/components/Logo.vue'
+import { db } from "~/plugins/firebase.js";
+import Logo from "~/components/Logo.vue";
 
 export default {
-  asyncData () {
-    return {
-      renderSource: process.static ? 'static' : (process.server ? 'server' : 'client'),
-      stories: db.collection("stories").get().then(response => {
-        return response
-      }).catch(err => {
-        console.log(err)
-      })
-    }
+  async asyncData() {
+    const renderSource = process.static
+      ? "static"
+      : process.server ? "server" : "client";
+    const stories = [];
+    const storiesRef = await db
+      .collection("stories")
+      .get()
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          stories.push({ id: doc.id, data: doc.data() });
+        });
+      });
+
+    return { stories, renderSource };
   },
   components: {
     Logo
   },
   methods: {
-    reloadPage () {
-      window.location.reload()
+    reloadPage() {
+      window.location.reload();
     }
   }
-}
+};
 </script>

@@ -1,5 +1,5 @@
-import firebase from 'firebase'
-import 'firebase/firestore' //if use firestore
+import firebase from 'firebase';
+import 'firebase/firestore';
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
@@ -15,6 +15,6 @@ if (!firebase.apps.length) {
 firebase.firestore().settings({ timestampsInSnapshots: true })
 
 const db = firebase.firestore()
-const storage = firebase.storage() //if use storage
+// const storage = firebase.storage() //if use storage
 
-export { storage, db }
+export { db }
