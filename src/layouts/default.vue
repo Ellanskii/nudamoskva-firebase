@@ -12,7 +12,7 @@
 <script>
 import AppFooter from "@/components/Footer";
 import AppHeader from "@/components/Header";
-import NavBar from "@/components/Navbar";
+import NavBar from "@/components/Navbar/Navbar";
 
 export default {
   components: { AppHeader, AppFooter, NavBar },

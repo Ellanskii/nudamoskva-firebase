@@ -15,12 +15,18 @@
 </template>
 
 <script>
+import { db } from '~/plugins/firebase.js'
 import Logo from '~/components/Logo.vue'
 
 export default {
   asyncData () {
     return {
-      renderSource: process.static ? 'static' : (process.server ? 'server' : 'client')
+      renderSource: process.static ? 'static' : (process.server ? 'server' : 'client'),
+      stories: db.collection("stories").get().then(response => {
+        return response
+      }).catch(err => {
+        console.log(err)
+      })
     }
   },
   components: {
