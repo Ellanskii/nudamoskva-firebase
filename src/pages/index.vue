@@ -35,8 +35,8 @@ export default {
     }
   },
   mounted() {
-    this.$cookie.set('test', 'Hello world!', 1);
-    console.log(this.$cookie.get('test'))
+    window.$cookies.set('test', 'Hello world!', 1);
+    console.log(window.$cookies.get('test'))
   }
 };
 </script>

@@ -1,4 +1,4 @@
 // Require dependencies
 import Vue from 'vue'
-import VueCookie from 'vue-cookie'
-Vue.use(VueCookie)
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies)
