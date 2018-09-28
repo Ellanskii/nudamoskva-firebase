@@ -1,11 +1,7 @@
-<template>
-  <div id="app-wrapper">
-    <app-header></app-header>
-    <nav-bar></nav-bar>
-    <div id="content-wrapper" class="mui--text-center">
-      <nuxt class="mui-container"/>
-    </div>
-  </div>
+<template lang="pug">
+  #app-wrapper
+    nav-bar(isFixed)
+    nuxt
 </template>
 
 <script>
@@ -23,9 +19,5 @@ export default {
 </script>
 
 <style>
-#app-wrapper {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
+
 </style>

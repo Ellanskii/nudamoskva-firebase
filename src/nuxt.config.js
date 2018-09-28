@@ -1,4 +1,7 @@
 module.exports = {
+  router: {
+    linkActiveClass: 'is-active'
+  },
   /*
    ** Headers of the page
    */
@@ -27,6 +30,9 @@ module.exports = {
     ]
   },
   plugins: [{ src: "~plugins/cookies.js", ssr: false }],
+  modules: [
+    'nuxt-buefy'
+  ],
 
   // <script src="https://cdn.muicss.com/mui-0.9.35/js/mui.min.js"></script>
   /*
@@ -35,12 +41,7 @@ module.exports = {
   loading: {
     color: "#3B8070"
   },
-  css: [
-    {
-      src: "@/assets/styles/main.css",
-      lang: "css"
-    }
-  ],
+
   /*
    ** Build configuration
    */

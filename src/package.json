@@ -16,6 +16,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "firebase": "^5.5.1",
     "nuxt": "^1.0.0",
+    "nuxt-buefy": "^0.2.3",
     "vue-cookie": "^1.1.4",
     "vue-cookies": "^1.5.7"
   },
