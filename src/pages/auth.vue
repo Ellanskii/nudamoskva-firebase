@@ -13,8 +13,6 @@
                                 a.has-text-grey Вход
                                 span.has-text-grey.dot  · 
                                 a.has-text-grey Забыли пароль?
-
-
 </template>
 
 <script>

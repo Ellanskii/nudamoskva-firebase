@@ -3,11 +3,12 @@ ul
   li(v-for="story in stories" :key="story.id")
     h1 {{ story.data.title }}
     .content(v-html="story.data.content")
+    story-modal
 </template>
 
 <script>
 import { db } from "~/plugins/firebase.js";
-import Logo from "~/components/Logo.vue";
+import StoryModal from "~/components/StoryModal.vue";
 
 export default {
   async asyncData() {
@@ -27,12 +28,7 @@ export default {
     return { stories, renderSource };
   },
   components: {
-    Logo
-  },
-  methods: {
-    reloadPage() {
-      window.location.reload();
-    }
+    StoryModal
   },
   mounted() {
     console.log($nuxt.$route.path, $nuxt.$route.name)
