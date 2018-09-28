@@ -8,6 +8,7 @@
     "firebase-functions": "^2.0.0",
     "firebase-tools": "^4.2.1",
     "nuxt": "^1.0.0",
+    "nuxt-buefy": "^0.2.3",
     "xmlhttprequest": "^1.8.0"
   },
   "engines": {

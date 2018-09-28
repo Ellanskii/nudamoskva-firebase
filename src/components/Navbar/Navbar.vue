@@ -6,9 +6,9 @@
             .navbar-menu
                 .navbar-start(v-if="$nuxt.$route.name === 'index'")
                     .navbar-item
-                        .button: b-icon(icon="account")
+                        .button: b-icon(icon="map-marker")
                     .navbar-item
-                        .button: b-icon(icon="account")
+                        .button: b-icon(icon="format-list-bulleted")
                 .navbar-end
                     .navbar-item
                         nuxt-link(to="auth")

@@ -17,7 +17,7 @@ export default {
         "Сойдёт",
         "Нормас"
       ],
-      text: ""
+      text: "OK"
     };
   },
   created() {
