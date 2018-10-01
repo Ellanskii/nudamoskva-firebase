@@ -1,6 +1,6 @@
 module.exports = {
   router: {
-    linkActiveClass: 'is-active'
+    linkActiveClass: "is-active"
   },
   /*
    ** Headers of the page
@@ -31,7 +31,18 @@ module.exports = {
   },
   plugins: [{ src: "~plugins/cookies.js", ssr: false }],
   modules: [
-    'nuxt-buefy'
+    "nuxt-buefy",
+    [
+      "@nuxtjs/yandex-metrika",
+      {
+        id: "50548663",
+        webvisor: true,
+        clickmap: true,
+        useCDN:false,
+        trackLinks:true,
+        accurateTrackBounce:true,
+      }
+    ]
   ],
 
   // <script src="https://cdn.muicss.com/mui-0.9.35/js/mui.min.js"></script>

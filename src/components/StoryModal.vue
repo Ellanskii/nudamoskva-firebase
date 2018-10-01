@@ -4,7 +4,7 @@
     .modal-card-body
         article.content(v-html="story.data.content")
     .modal-card-foot
-        random-button
+        random-button(@click.native="$parent.close()")
 </template>
 
 <script>
