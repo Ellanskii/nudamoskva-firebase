@@ -29,7 +29,9 @@ module.exports = {
       }
     ]
   },
-  plugins: [{ src: "~plugins/cookies.js", ssr: false }],
+  plugins: [
+    { src: "~plugins/cookies.js", ssr: false },
+  ],
   modules: [
     "nuxt-buefy",
     [
@@ -38,9 +40,9 @@ module.exports = {
         id: "50548663",
         webvisor: true,
         clickmap: true,
-        useCDN:false,
-        trackLinks:true,
-        accurateTrackBounce:true,
+        useCDN: false,
+        trackLinks: true,
+        accurateTrackBounce: true
       }
     ]
   ],

@@ -2,10 +2,13 @@
 .hero.is-fullheight
   .hero-body
     ul
-      li(v-for="story in stories" :key="story.id" @click="openStory(story)")
+      //- li(v-for="story in stories" :key="story.id" @click="openStory(story)")
         h1 {{ story.data.title }}
+      li(v-for="story in stories" :key="story.id")
+        nuxt-link(:to="'/'+story.data.title" @click.native="currentStory=story") {{ story.data.title }}
     b-modal(:active.sync="isModalActive" has-modal-card)
       story-modal(:story="currentStory")
+    nuxt-child(:key="$route.params.id" :story="currentStory")
 </template>
 
 <script>
