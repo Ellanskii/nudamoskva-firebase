@@ -1,7 +1,7 @@
 <template lang="pug">
-  #app-wrapper
-    nav-bar(isFixed)
-    nuxt
+.has-navbar-fixed-top
+  nav-bar(isFixed)
+  nuxt
 </template>
 
 <script>
@@ -18,6 +18,8 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss">
+  .has-navbar-fixed-top {
+    padding-top: 3.5rem;
+  }
 </style>

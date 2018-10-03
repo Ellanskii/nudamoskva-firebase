@@ -4,7 +4,7 @@
 </div>
 </template>
 <script>
-const Quill = (process.BROWSER_BUILD) ? require('~/plugins/quill.js') : '' ;
+// const Quill = (process.BROWSER_BUILD) ? require('~/plugins/quill.js') : '' ;
 // import quill from '~/plugins/quill.js'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
