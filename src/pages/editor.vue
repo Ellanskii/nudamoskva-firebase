@@ -23,10 +23,12 @@
                             type="button"
                         )
 
-            .box {{content}}
+            .box
+                button.button(@click="upload(images[0])") Upload
 </template>
 
 <script>
+import { storage } from "~/plugins/firebase.js";
 import VueEditor from "~/components/VueEditor.vue";
 export default {
   components: {
@@ -50,9 +52,12 @@ export default {
   },
 
   methods: {
-      deleteImage(index) {
-                this.images.splice(index, 1)
-            }
+    deleteImage(index) {
+      this.images.splice(index, 1);
+    },
+    upload(file) {
+      this.uploadTask = storage.ref("images/" + file.name).put(file);
+    }
   }
 };
 </script>
