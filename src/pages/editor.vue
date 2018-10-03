@@ -2,8 +2,27 @@
 .hero 
     .hero-body
         .container
-            .box
+            .box: b-field(label="Название")
+                b-input(v-model="title")
+            .box: b-field(label="Тело истории")
                 vue-editor(v-model="content")
+            .box
+                b-field(label="Картиночки")
+                    b-upload(v-model="images" multiple drag-drop)
+                        .section.has-text-centered.content
+                            p: b-icon(icon="upload" size="is-large")
+                            p Нажмите или перетащите файлы для загрузки
+                .tags
+                    span(
+                        v-for="(file, index) in images"
+                        :key="index"
+                        class="tag is-primary"
+                        ) {{ file.name }}
+                        button.delete.is-small(
+                            @click="deleteImage(index)"
+                            type="button"
+                        )
+
             .box {{content}}
 </template>
 
@@ -24,14 +43,26 @@ export default {
 
   data() {
     return {
-      content: ""
+      title: "",
+      content: "",
+      images: []
     };
+  },
+
+  methods: {
+      deleteImage(index) {
+                this.images.splice(index, 1)
+            }
   }
 };
 </script>
 
-<style>
+<style lang="scss">
 .ql-editor p {
-    margin: .5em 0;
+  margin: 0.5em 0;
+}
+
+.upload .upload-draggable {
+  display: block;
 }
 </style>
