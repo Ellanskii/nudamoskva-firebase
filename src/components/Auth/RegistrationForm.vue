@@ -16,15 +16,15 @@ form
             size="is-medium" 
             placeholder="Пароль" 
             v-model="password" 
-            autocomplete="current-password" 
+            autocomplete="new-password" 
             name="password" 
             required
         )
     button.button.is-primary.is-fullwidth.is-medium(
-        @click="signIn()" 
+        @click="signUp()" 
         :disabled="!formReady" 
         type="button"
-    ) Впустите
+    ) Продолжить
 </template>
 
 <script>
@@ -38,8 +38,8 @@ export default {
     };
   },
   methods: {
-    signIn() {
-      auth.signInWithEmailAndPassword(this.email, this.password).then(
+    signUp() {
+      auth.createUserWithEmailAndPassword(this.email, this.password).then(
         user => {},
         err => {
           this.$dialog.alert({

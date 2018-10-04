@@ -17,10 +17,12 @@
 
 <script>
 import LoginForm from "~/components/Auth/LoginForm";
+import RegistrationForm from "~/components/Auth/RegistrationForm";
 
 export default {
   components: {
-    LoginForm
+    LoginForm,
+    RegistrationForm
   },
   data() {
     return {
