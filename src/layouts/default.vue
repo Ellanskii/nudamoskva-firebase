@@ -5,21 +5,15 @@
 </template>
 
 <script>
-import AppHeader from "@/components/Header";
 import NavBar from "@/components/Navbar/Navbar";
 
 export default {
-  components: { AppHeader, NavBar },
-  methods: {
-    reloadPage() {
-      window.location.reload();
-    }
-  }
+  components: { NavBar },
 };
 </script>
 
 <style lang="scss">
   .has-navbar-fixed-top {
-    padding-top: 3.5rem;
+    padding-top: 3.25rem;
   }
 </style>
