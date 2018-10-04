@@ -48,9 +48,7 @@ export default {
   },
 
   mounted() {
-    console.log($nuxt.$route.path, $nuxt.$route.name);
-    window.$cookies.set("test", "Hello world!", 1);
-    console.log(window.$cookies.get("test"));
+
   }
 };
 </script>

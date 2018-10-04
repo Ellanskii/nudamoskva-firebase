@@ -30,7 +30,7 @@ module.exports = {
     ]
   },
   plugins: [
-    { src: "~plugins/cookies.js", ssr: false },
+    
   ],
   modules: [
     "nuxt-buefy",
