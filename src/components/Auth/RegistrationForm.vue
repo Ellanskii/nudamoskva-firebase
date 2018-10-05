@@ -32,7 +32,7 @@ form.box
 </template>
 
 <script>
-import { auth } from "~/plugins/firebase.js";
+import { auth } from "~/plugins/firebase/auth.js";
 
 export default {
   data: function() {
