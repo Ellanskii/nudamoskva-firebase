@@ -1,5 +1,5 @@
 <template lang="pug">
-form.box
+form.box(v-on:submit.prevent="signUp")
   h2.title.has-text-centered.has-text-grey Регистрация
   b-field(custom-class="is-medium")
       b-input(
@@ -22,9 +22,7 @@ form.box
           required
       )
   button.button.is-primary.is-fullwidth.is-medium(
-      @click="signUp()" 
       :disabled="!formReady || isLoading" 
-      type="button"
   ) Продолжить
   p.has-text-centered.has-text-weight-bold.auth-help
     a.has-text-grey(@click="$emit('change-form', 'login')") Есть аккаунт? Войдите
