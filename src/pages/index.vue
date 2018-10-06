@@ -1,6 +1,7 @@
 <template lang="pug">
 .hero.is-fullheight
   .hero-body
+    stories-list
     ul
       //- li(v-for="story in stories" :key="story.id" @click="openStory(story)")
         h1 {{ story.data.title }}
@@ -13,11 +14,13 @@
 
 <script>
 import { db } from "~/plugins/firebase/db.js";
-import StoryModal from "~/components/StoryModal.vue";
+import StoryModal from "~/components/StoryModal";
+import StoriesList from "~/components/StoriesList";
 
 export default {
   components: {
-    StoryModal
+    StoryModal,
+    StoriesList
   },
 
   async asyncData() {
@@ -26,7 +29,7 @@ export default {
       .collection("stories")
       .get()
       .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
+        querySnapshot.forEach(doc => {
           stories.push({ id: doc.id, data: doc.data() });
         });
       });

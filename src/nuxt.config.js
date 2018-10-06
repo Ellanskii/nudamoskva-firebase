@@ -6,7 +6,7 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: "Nuxtjs SSR Firebase Functions",
+    title: "ну да москва",
     meta: [
       {
         charset: "utf-8"
@@ -18,7 +18,7 @@ module.exports = {
       {
         hid: "description",
         name: "description",
-        content: "Nuxt.js project"
+        content: "история москвы норм"
       }
     ],
     link: [
@@ -47,7 +47,6 @@ module.exports = {
     ]
   ],
 
-  // <script src="https://cdn.muicss.com/mui-0.9.35/js/mui.min.js"></script>
   /*
    ** Customize the progress bar color
    */
