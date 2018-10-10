@@ -2,14 +2,14 @@
 .hero.is-fullheight
   .hero-body
     stories-list
-    ul
-      //- li(v-for="story in stories" :key="story.id" @click="openStory(story)")
-        h1 {{ story.data.title }}
-      li(v-for="story in stories" :key="story.id")
-        nuxt-link(:to="'/'+story.data.title" @click.native="currentStory=story") {{ story.data.title }}
+    ul.column.is-3
+      li.media(v-for="story in stories" :key="story.id")
+        .media-content  
+          nuxt-link(:to="'/'+story.id" @click.native="isModalActive = true") {{ story.data.title }}
+        .media-right
+          b-icon(icon="eye")
     b-modal(:active.sync="isModalActive" has-modal-card)
-      story-modal(:story="currentStory")
-    nuxt-child(:key="$route.params.id" :story="currentStory")
+      nuxt-child(:key="$route.params.id")
 </template>
 
 <script>
@@ -23,22 +23,22 @@ export default {
     StoriesList
   },
 
-  async asyncData() {
+  async asyncData(context) {
+    const isModalActive = context.route.params.id ? true : false
     const stories = [];
     const storiesRef = await db
-      .collection("stories")
+      .collection("storiesList")
       .get()
       .then(function(querySnapshot) {
         querySnapshot.forEach(doc => {
           stories.push({ id: doc.id, data: doc.data() });
         });
       });
-    return { stories };
+    return { stories, isModalActive };
   },
 
   data() {
     return {
-      isModalActive: false,
       currentStory: null
     };
   },

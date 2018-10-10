@@ -7,10 +7,8 @@ ul
 
 <script>
 export default {
-    computed: {
-        stories() {
-            return this.$store.state.stories.list
-        }
+    props: {
+        stories: Array
     }
 }
 </script>
