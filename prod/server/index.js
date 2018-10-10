@@ -34,6 +34,9 @@ exports.createStory = functions.firestore
   .onCreate((snap, context) => {
     const id = context.params.storyId;
     firestore.doc(`storiesList/${id}`).set({
-      title: snap.data().title
+      title: snap.data().title,
+      createdAt: snap.data().createdAt || admin.database.ServerValue.TIMESTAMP,
+      geopoint: snap.data().geopoint || null,
+      hasAudio: snap.data().audio ? true : false
     });
   });
