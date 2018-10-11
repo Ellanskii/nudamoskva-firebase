@@ -30,7 +30,7 @@ module.exports = {
     ]
   },
   plugins: [
-    
+    // {src: '~plugins/yandex-maps.js', ssr: false},
   ],
   modules: [
     "nuxt-buefy",
