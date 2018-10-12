@@ -9,7 +9,7 @@
         .media-right
           b-icon(icon="eye")
     .column.is-9(style="position: relative")
-      story-map(:stories="storiesWithGeopoint")
+      story-map(:stories="storiesWithGeopoint" @markerClicked="isModalActive = true")
       //- yandex-map
     b-modal(:active.sync="isModalActive" has-modal-card)
       nuxt-child(:key="$route.params.id")

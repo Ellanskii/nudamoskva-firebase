@@ -13,11 +13,10 @@ yandex-map(
         markerId="story.id"
         marker-type="circle"
         circle-radius="160"
-        hint-content="Доставить сюда"
         :marker-fill="{color: '#000000', opacity: 0.4}"
         :marker-stroke="{color: '#ff0000', width: 5}"
         :coords="story.data.geopoint | geopointToCoords"
-        :balloon="{header: 'header', body: 'body', footer: 'footer'}"
+        :callbacks="callbacks(story.id)"
         )
 </template>
 
@@ -35,9 +34,25 @@ export default {
       showMap: false
     };
   },
-  
+
+  computed: {
+    // callbacks(id) {
+    //   return { click: this.markerClick(id) };
+    // }
+  },
+
   mounted() {
     this.showMap = window.innerWidth > 768 ? true : false;
+  },
+
+  methods: {
+    callbacks(id) {
+      return { click: () => this.markerClick(id) };
+    },
+    markerClick(id) {
+      this.$router.push(id);
+      this.$emit("markerClicked");
+    }
   },
 
   filters: {
