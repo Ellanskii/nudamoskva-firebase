@@ -9,7 +9,7 @@
         .media-right
           b-icon(icon="eye")
     .column.is-9(style="position: relative")
-      story-map(:stories="stories")
+      story-map(:stories="storiesWithGeopoint")
       //- yandex-map
     b-modal(:active.sync="isModalActive" has-modal-card)
       nuxt-child(:key="$route.params.id")
@@ -28,16 +28,8 @@ export default {
     StoryMap
   },
 
-    head: {
-    script: [
-      {
-        src: " https://unpkg.com/vue-yandex-maps"
-      }
-    ]
-  },
-
   async asyncData(context) {
-    const isModalActive = context.route.params.id ? true : false
+    const isModalActive = context.route.params.id ? true : false;
     const stories = [];
     const storiesRef = await db
       .collection("storiesList")
@@ -56,16 +48,17 @@ export default {
     };
   },
 
-  methods: {
-    openStory(story) {
-      this.currentStory = story;
-      this.isModalActive = true;
+  computed: {
+    storiesWithGeopoint() {
+      return this.stories.filter(story => {
+        return story.data.geopoint;
+      });
     }
   },
 
-  mounted() {
+  mounted() {}
 
-  }
+
 };
 </script>
 
