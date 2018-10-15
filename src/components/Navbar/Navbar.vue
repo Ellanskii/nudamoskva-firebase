@@ -1,6 +1,6 @@
 <template lang="pug">
     nav.navbar(:class="{ 'is-fixed-top': isFixed }")
-        .container
+        .container.is-fluid
             .navbar-brand
                 nuxt-link(to="/") LOGO
             .navbar-menu

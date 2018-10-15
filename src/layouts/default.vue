@@ -2,13 +2,15 @@
 .has-navbar-fixed-top
   nav-bar(isFixed)
   nuxt
+  footer-component
 </template>
 
 <script>
 import NavBar from "@/components/Navbar/Navbar";
+import FooterComponent from "@/components/FooterComponent";
 
 export default {
-  components: { NavBar },
+  components: { NavBar, FooterComponent },
 };
 </script>
 

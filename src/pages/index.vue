@@ -1,6 +1,6 @@
 <template lang="pug">
-.hero.is-fullheight
-  .hero-body: .container: .columns
+.stories-container
+  .columns.is-fullheight
     //- stories-list
     ul.column.is-3
       li.media(v-for="story in stories" :key="story.id")
@@ -9,7 +9,11 @@
         .media-right
           b-icon(icon="eye")
     .column.is-9(style="position: relative")
-      story-map(:stories="storiesWithGeopoint" @markerClicked="isModalActive = true")
+      story-map(
+        v-if="showMap"
+        :stories="storiesWithGeopoint" 
+        @markerClicked="isModalActive = true"
+        )
       //- yandex-map
     b-modal(:active.sync="isModalActive" has-modal-card)
       nuxt-child(:key="$route.params.id")
@@ -44,7 +48,7 @@ export default {
 
   data() {
     return {
-      currentStory: null
+      showMap: false
     };
   },
 
@@ -56,10 +60,24 @@ export default {
     }
   },
 
-  mounted() {}
-
-
+  mounted() {
+    this.showMap = window.innerWidth > 768 ? true : false;
+  }
 };
 </script>
+
+<style lang="scss">
+.stories-container {
+  padding: 0 0.75rem;
+  height: calc(100vh - 3.25rem);
+  .columns.is-fullheight {
+    height: 100%;
+    .column {
+      height: 100%;
+    }
+  }
+}
+</style>
+
 
 

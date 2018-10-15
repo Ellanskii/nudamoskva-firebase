@@ -1,11 +1,10 @@
 <template lang="pug">
 yandex-map(
-    v-if="showMap",
-    :coords="coords",
-    zoom="10",
-    :controls="[]",
-    :behaviors="[]",
-    style="position: absolute; width: 100%; height: 100%;",
+    :coords="coords"
+    zoom="10"
+    :controls="[]"
+    :behaviors="[]"
+    style="position: absolute; width: 100%; height: 100%;"
     )
     ymap-marker(
         v-for="story in stories"
@@ -36,13 +35,7 @@ export default {
   },
 
   computed: {
-    // callbacks(id) {
-    //   return { click: this.markerClick(id) };
-    // }
-  },
 
-  mounted() {
-    this.showMap = window.innerWidth > 768 ? true : false;
   },
 
   methods: {
