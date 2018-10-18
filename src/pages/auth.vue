@@ -3,25 +3,26 @@
         .hero-body
             .container
                 .columns.is-centered
-                    .column.is-6-tablet.is-4-desktop.is-3-fullhd
-                        .box
-                            h2.title.has-text-centered.has-text-grey Ну привет
-                            login-form(v-if="currentForm === 'login'")
-                            registration-form(v-else-if="currentForm === 'registration'")
-                            restore-form(v-else-if="currentForm === 'restore'")
-                            p.has-text-centered.has-text-weight-bold.auth-help
-                                a.has-text-grey Вход
-                                span.has-text-grey.dot  · 
-                                a.has-text-grey Забыли пароль?
+                    .column.is-6-tablet.is-4-desktop.is-4-fullhd
+                      transition(name="fade" mode="out-in")
+                            login-form(v-if="currentForm === 'login'" @change-form="currentForm=$event")
+                            registration-form(v-else-if="currentForm === 'registration'" @change-form="currentForm=$event")
+                            restore-form(v-else-if="currentForm === 'restore'" @change-form="currentForm=$event")
+
 </template>
 
 <script>
 import LoginForm from "~/components/Auth/LoginForm";
+import RegistrationForm from "~/components/Auth/RegistrationForm";
 
 export default {
   components: {
-    LoginForm
+    LoginForm,
+    RegistrationForm
   },
+
+  transition: 'fade',
+
   data() {
     return {
       currentForm: "login"

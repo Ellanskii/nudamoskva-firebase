@@ -1,6 +1,6 @@
 <template lang="pug">
-form.box(v-on:submit.prevent="signIn")
-  h2.title.has-text-centered.has-text-grey Ну привет
+form.box(v-on:submit.prevent="signUp")
+  h2.title.has-text-centered.has-text-grey Регистрация
   b-field(custom-class="is-medium")
       b-input(
           type="email" 
@@ -17,17 +17,16 @@ form.box(v-on:submit.prevent="signIn")
           size="is-medium" 
           placeholder="Пароль" 
           v-model="password" 
-          autocomplete="current-password" 
+          autocomplete="new-password" 
           name="password" 
           required
       )
   button.button.is-primary.is-fullwidth.is-medium(
       :disabled="!formReady || isLoading" 
-  ) Впустите
+  ) Продолжить
   p.has-text-centered.has-text-weight-bold.auth-help
-    a.has-text-grey(@click="$emit('change-form', 'registration')") Регистрация
-    span.has-text-grey.dot  · 
-    a.has-text-grey Забыли пароль?
+    a.has-text-grey(@click="$emit('change-form', 'login')") Есть аккаунт? Войдите
+
 </template>
 
 <script>
@@ -42,17 +41,16 @@ export default {
     };
   },
   methods: {
-    signIn() {
+    signUp() {
       this.isLoading = true;
-      auth.signInWithEmailAndPassword(this.email, this.password).then(
+      auth.createUserWithEmailAndPassword(this.email, this.password).then(
         user => {
           this.isLoading = false;
-          this.$router.push("editor");
         },
         err => {
           this.isLoading = false;
           this.$dialog.alert({
-            title: "Не получилось войти",
+            title: "Регистрация не удалась",
             message: err.message,
             type: "is-danger",
             hasIcon: true,

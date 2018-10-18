@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { storage } from "~/plugins/firebase.js";
+import { storage } from "~/plugins/firebase/storage.js";
 import VueEditor from "~/components/VueEditor.vue";
 export default {
   components: {

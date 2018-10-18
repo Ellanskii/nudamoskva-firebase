@@ -20,6 +20,7 @@
     "nuxt-buefy": "^0.2.3",
     "vue-cookie": "^1.1.4",
     "vue-cookies": "^1.5.7",
+    "vue-yandex-maps": "^0.7.15",
     "vue-yandex-metrika": "^1.7.2",
     "vue2-editor": "^2.6.6"
   },

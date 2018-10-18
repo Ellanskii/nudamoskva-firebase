@@ -1,58 +1,83 @@
 <template lang="pug">
-.hero.is-fullheight
-  .hero-body
-    ul
-      //- li(v-for="story in stories" :key="story.id" @click="openStory(story)")
-        h1 {{ story.data.title }}
-      li(v-for="story in stories" :key="story.id")
-        nuxt-link(:to="'/'+story.data.title" @click.native="currentStory=story") {{ story.data.title }}
+.stories-container
+  .columns.is-fullheight
+    //- stories-list
+    ul.column.is-3
+      li.media(v-for="story in stories" :key="story.id")
+        .media-content  
+          nuxt-link(:to="'/'+story.id" @click.native="isModalActive = true") {{ story.data.title }}
+        .media-right
+          b-icon(icon="eye")
+    .column.is-9(style="position: relative")
+      story-map(
+        v-if="showMap"
+        :stories="storiesWithGeopoint" 
+        @markerClicked="isModalActive = true"
+        )
+      //- yandex-map
     b-modal(:active.sync="isModalActive" has-modal-card)
-      story-modal(:story="currentStory")
-    nuxt-child(:key="$route.params.id" :story="currentStory")
+      nuxt-child(:key="$route.params.id")
 </template>
 
 <script>
-import { db } from "~/plugins/firebase.js";
-import StoryModal from "~/components/StoryModal.vue";
+import { db } from "~/plugins/firebase/db.js";
+import StoryModal from "~/components/StoryModal";
+import StoriesList from "~/components/StoriesList";
+import StoryMap from "~/components/StoryMap";
 
 export default {
   components: {
-    StoryModal
+    StoryModal,
+    StoriesList,
+    StoryMap
   },
 
-  async asyncData() {
+  async asyncData(context) {
+    const isModalActive = context.route.params.id ? true : false;
     const stories = [];
     const storiesRef = await db
-      .collection("stories")
+      .collection("storiesList")
       .get()
       .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
+        querySnapshot.forEach(doc => {
           stories.push({ id: doc.id, data: doc.data() });
         });
       });
-    return { stories };
+    return { stories, isModalActive };
   },
 
   data() {
     return {
-      isModalActive: false,
-      currentStory: null
+      showMap: false
     };
   },
 
-  methods: {
-    openStory(story) {
-      this.currentStory = story;
-      this.isModalActive = true;
+  computed: {
+    storiesWithGeopoint() {
+      return this.stories.filter(story => {
+        return story.data.geopoint;
+      });
     }
   },
 
   mounted() {
-    console.log($nuxt.$route.path, $nuxt.$route.name);
-    window.$cookies.set("test", "Hello world!", 1);
-    console.log(window.$cookies.get("test"));
+    this.showMap = window.innerWidth > 768 ? true : false;
   }
 };
 </script>
+
+<style lang="scss">
+.stories-container {
+  padding: 0 0.75rem;
+  height: calc(100vh - 3.25rem);
+  .columns.is-fullheight {
+    height: 100%;
+    .column {
+      height: 100%;
+    }
+  }
+}
+</style>
+
 
 
