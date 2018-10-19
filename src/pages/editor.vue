@@ -27,11 +27,13 @@
                                 )
 
                     .box
-                        button.button(@click="upload(images[0])") Upload
+                        button.button.is-link(@click="upload(images[0])") Upload
+                        button.button.is-link(@click="savePost") Save
 </template>
 
 <script>
 import { storage } from "~/plugins/firebase/storage.js";
+import { db } from "~/plugins/firebase/db.js";
 import VueEditor from "~/components/VueEditor.vue";
 export default {
   components: {
@@ -48,6 +50,8 @@ export default {
 
   data() {
     return {
+      storyId: null,
+      coords: '55.6332, 37.5198',
       title: "",
       content: "",
       images: []
@@ -60,6 +64,21 @@ export default {
     },
     upload(file) {
       this.uploadTask = storage.ref("images/" + file.name).put(file);
+    },
+    savePost() {
+      const docRef = this.storyId ? db().doc(`stories/${this.storyId}`) : db().collection(`stories`).doc()
+      docRef.set(
+          {
+            title: this.title,
+            content: this.content,
+            geopoint: new db.GeoPoint(55.6332, 37.5198)
+          },
+          { merge: true }
+        )
+        .then(() => this.$router.push("/"))
+        .catch(error => {
+          console.error(`Error adding document: ${error}`);
+        });
     }
   }
 };

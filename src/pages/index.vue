@@ -35,7 +35,7 @@ export default {
   async asyncData(context) {
     const isModalActive = context.route.params.id ? true : false;
     const stories = [];
-    const storiesRef = await db
+    const storiesRef = await db()
       .collection("storiesList")
       .get()
       .then(function(querySnapshot) {
