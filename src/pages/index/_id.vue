@@ -23,7 +23,7 @@ export default {
     const openedDirectly = true;
     const id = context.route.params.id;
     let story = {};
-    const storyRef = await db
+    const storyRef = await db()
       .doc(`stories/${id}`)
       .get()
       .then(function(doc) {
