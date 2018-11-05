@@ -8925,6 +8925,10 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
+vue-yandex-maps@^0.7.15:
+  version "0.7.15"
+  resolved "https://registry.yarnpkg.com/vue-yandex-maps/-/vue-yandex-maps-0.7.15.tgz#d187144e8394e3c2e2c1095550b14f5e4ee3e927"
+
 vue-yandex-metrika@^1.7.2:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/vue-yandex-metrika/-/vue-yandex-metrika-1.7.2.tgz#80c4c8bb66211f7e45768d5c9aa3789b8f29edda"

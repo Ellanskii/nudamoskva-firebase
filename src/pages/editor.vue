@@ -25,7 +25,8 @@
                                     @click="deleteImage(index)"
                                     type="button"
                                 )
-
+                    .box
+                        geo-setter
                     .box
                         button.button.is-link(@click="upload(images[0])") Upload
                         button.button.is-link(@click="savePost") Save
@@ -34,24 +35,19 @@
 <script>
 import { storage } from "~/plugins/firebase/storage.js";
 import { db } from "~/plugins/firebase/db.js";
-import VueEditor from "~/components/VueEditor.vue";
+import VueEditor from "~/components/Editor/VueEditor.vue";
+import GeoSetter from "~/components/Editor/GeoSetter.vue";
+
 export default {
   components: {
-    VueEditor
-  },
-
-  head: {
-    script: [
-      {
-        src: "https://cdn.quilljs.com/1.3.6/quill.min.js"
-      }
-    ]
+    VueEditor,
+    GeoSetter
   },
 
   data() {
     return {
       storyId: null,
-      coords: '55.6332, 37.5198',
+      coords: "55.6332, 37.5198",
       title: "",
       content: "",
       images: []
@@ -66,8 +62,13 @@ export default {
       this.uploadTask = storage.ref("images/" + file.name).put(file);
     },
     savePost() {
-      const docRef = this.storyId ? db().doc(`stories/${this.storyId}`) : db().collection(`stories`).doc()
-      docRef.set(
+      const docRef = this.storyId
+        ? db().doc(`stories/${this.storyId}`)
+        : db()
+            .collection(`stories`)
+            .doc();
+      docRef
+        .set(
           {
             title: this.title,
             content: this.content,
@@ -75,9 +76,17 @@ export default {
           },
           { merge: true }
         )
-        .then(() => this.$router.push("/"))
+        // .then(doc => this.$router.push(`/${doc.id}`))
+        .then(doc => console.log(doc))
         .catch(error => {
-          console.error(`Error adding document: ${error}`);
+          this.$dialog.alert({
+            title: "Ошибка при добавлении документа",
+            message: error.message,
+            type: "is-danger",
+            hasIcon: true,
+            icon: "alert-circle-outline",
+            canCancel: ["escape", "outside"]
+          });
         });
     }
   }

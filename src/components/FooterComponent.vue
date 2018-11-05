@@ -2,10 +2,10 @@
 <template lang="pug">
     footer.footer#footer
         .container.is-fluid
-            a(href="https://github.com/Ellanskii", target="_blank", rel="nofollow")
-                |©&nbsp;
-                b-icon(icon="github-circle" size="is-small")
-                | Ellanskii, {{ copyrightYear }}
+            //- a(href="https://github.com/Ellanskii", target="_blank", rel="nofollow")
+            //-     |©&nbsp;
+            //-     b-icon(icon="github-circle" size="is-small")
+            //-     | Ellanskii, {{ copyrightYear }}
 </template>
 
 <script>

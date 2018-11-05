@@ -29,8 +29,7 @@ export default {
 
   data() {
     return {
-      coords: [55.7522, 37.6203],
-      showMap: false
+      coords: [55.7522, 37.6203]
     };
   },
 
