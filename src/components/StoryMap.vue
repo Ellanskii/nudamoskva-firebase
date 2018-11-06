@@ -1,5 +1,11 @@
 <template lang="pug">
 yandex-map(
+  v-if="isEditor"
+  :coords="coords"
+  style="position: absolute; width: 100%; height: 500px;"
+)
+yandex-map(
+    v-else
     :coords="coords"
     zoom="10"
     :controls="[]"
@@ -24,7 +30,11 @@ import { yandexMap, ymapMarker } from "vue-yandex-maps";
 export default {
   components: { yandexMap, ymapMarker },
   props: {
-    stories: Array
+    stories: Array,
+    isEditor: {
+      type: Boolean,
+      default: false
+    }
   },
 
   data() {
