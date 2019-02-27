@@ -72,7 +72,7 @@ export default {
           {
             title: this.title,
             content: this.content,
-            geopoint: new db.GeoPoint(55.6332, 37.5198)
+            // geopoint: new db.GeoPoint(55.6332, 37.5198)
           },
           { merge: true }
         )
